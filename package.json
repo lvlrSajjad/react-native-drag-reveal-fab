@@ -1,6 +1,6 @@
 {
   "name": "react-native-drag-reveal-fab",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A view can be shown by dragging a fab",
   "main": "index.js",
   "scripts": {

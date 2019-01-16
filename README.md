@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
- React Native Circle Reveal View
+ React Native Drag Reveal Fab
  </br>
  <br>
 
