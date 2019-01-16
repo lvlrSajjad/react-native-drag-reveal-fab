@@ -46,7 +46,12 @@ export default class App extends Component<Props> {
                 <Text>
                     {instructions}
                 </Text>
-              <DragReveal backgroundColor {'#004D40'}/>
+               <DragReveal
+                  icon // this you can render a custom icon that will be shown when fab minimized
+                  onExpand //this happens on reveal
+                  backgroundColor {'#004D40'}>
+                  {/* this content will reveal*/}
+              </DragReveal>
             </View>
         );
     }
