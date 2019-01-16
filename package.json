@@ -1,0 +1,31 @@
+{
+  "name": "react-native-drag-reveal-fab",
+  "version": "0.0.1",
+  "description": "A view can be shown by dragging a fab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvlrSajjad/react-native-drag-reveal-fab.git"
+  },
+  "keywords": [
+    "react-native",
+    "fab",
+    "floating-action-button",
+    "drag",
+    "gesture",
+    "reveal",
+    "dialog",
+    "view",
+    "animation",
+    "reveal-transition"
+  ],
+  "author": "Sajjad Asadi",
+  "license": "SEE LICENSE IN LICENCE",
+  "bugs": {
+    "url": "https://github.com/lvlrSajjad/react-native-drag-reveal-fab/issues"
+  },
+  "homepage": "https://github.com/lvlrSajjad/react-native-drag-reveal-fab#readme"
+}
