@@ -30,6 +30,7 @@ export default class DragReveal extends Component<Props> {
     _animatedValue2 = new Animated.Value(32);
     _animatedValue3 = new Animated.Value(0);
     _animatedValue4 = new Animated.Value(0);
+    _animatedValue5 = new Animated.Value(0);
     _collapsed = true;
     _expanded = false;
 
@@ -48,16 +49,15 @@ export default class DragReveal extends Component<Props> {
         },
         onPanResponderMove: (evt, gestureState) => {
             const moveX = Math.round(width - gestureState.moveX);
-            if (moveX <= width) {
+            const moveY = Math.round(height - gestureState.moveY);
+
+            if (moveX <= width && moveY <= height) {
                 this._animatedValue.setValue(moveX);
+                this._animatedValue5.setValue(moveY);
                 this._animatedValue3.setValue(2 * moveX);
                 this._animatedValue4.setValue(1 / -moveX);
-                if (moveX <= 32 && moveX >0) {
-                    if (moveX > width / 2) {
-                        this._animatedValue2.setValue(gestureState.moveX);
-                    } else {
-                        this._animatedValue2.setValue(width - gestureState.moveX);
-                    }
+                if ( moveX >0 && gestureState.moveX <= 32) {
+                    this._animatedValue2.setValue(gestureState.moveX);
                 }
             }
             // The most recent move distance is gestureState.move{X,Y}
@@ -68,7 +68,9 @@ export default class DragReveal extends Component<Props> {
         onPanResponderTerminationRequest: (evt, gestureState) => true,
         onPanResponderRelease: (evt, gestureState) => {
             const moveX = width - gestureState.moveX;
-            if (moveX > width / 2) {
+            const moveY = height - gestureState.moveY;
+
+            if (moveX > width / 2 || moveY > height / 2) {
                 this.expand();
             } else {
                 this.collapse();
@@ -95,6 +97,10 @@ export default class DragReveal extends Component<Props> {
                 toValue: width,
                 duration: 200,
             }),
+            Animated.spring(this._animatedValue5, {
+                toValue: height,
+                duration: 200,
+            }),
             Animated.spring(this._animatedValue2, {
                 toValue: 4,
                 duration: 200,
@@ -119,6 +125,10 @@ export default class DragReveal extends Component<Props> {
                 toValue: 0,
                 duration: 200,
 
+            }),
+            Animated.spring(this._animatedValue5, {
+                toValue: 0,
+                duration: 200,
             }),
             Animated.spring(this._animatedValue2, {
                 toValue: 32,
@@ -152,7 +162,7 @@ export default class DragReveal extends Component<Props> {
                 width: this._animatedValue,
                 maxWidth: width - 32,
                 maxHeight: height - 56,
-                height: this._animatedValue3,
+                height: this._animatedValue5,
                 minHeight: 56,
                 alignItems: 'center',
                 justifyContent: 'center',
